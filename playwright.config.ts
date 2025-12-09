@@ -11,7 +11,15 @@ export default defineConfig<TestOptions>({
   },
   retries: 1,
   reporter: [
-    ['json',  { outputFile: 'test-results/jsonReport.json' }],
+    process.env.CI ? ["dot"] : ["list"],
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        // Upload to Argos on CI only.
+        uploadToArgos: !!process.env.CI,
+      },
+    ],
+    ['json', { outputFile: 'test-results/jsonReport.json' }],
     ['junit', { outputFile: 'test-results/junitReport.xml' }],
     //['allure-playwright'],
     ['html'],
@@ -29,6 +37,7 @@ export default defineConfig<TestOptions>({
         : 'http://localhost:4200/',
 
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
     actionTimeout: 20000,
     navigationTimeout: 25000,
     video: {
@@ -51,14 +60,13 @@ export default defineConfig<TestOptions>({
     {
       name: 'firefox',
       use: {
-      browserName: 'firefox'
+        browserName: 'firefox'
       }
-      },
-      
-      {
+    },
+    {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-      },
+    },
       {
         name: 'pageObjectFullScreen',
         testMatch: 'usePageObjects.spec.ts',
@@ -66,17 +74,19 @@ export default defineConfig<TestOptions>({
           viewport: { width: 1920, height: 1080 }
         }
       },
-      {
-        name: 'mobile',
+    {
+      name: 'mobile',
       testMatch: '**/014-testMobile.spec.ts',
-        use: {
-          ...devices['iPhone 13 Pro'],
+      use: {
+        ...devices['iPhone 13 Pro'],
         headless: true,
-        },
-      }      
-    ],
-    webServer: {
-      command: 'npm run start',
-      url: 'http://localhost:4200/'
-    }    
+      },
+    }
+  ],
+
+  webServer: {
+    command: 'npm run start',
+    url: 'http://localhost:4200/',
+    reuseExistingServer: !process.env.CI,
+  },
 });

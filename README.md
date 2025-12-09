@@ -36,7 +36,7 @@ npx playwright install
 
 The project uses environment variables for configuration. Create a `.env` file in the root directory with the following variables:
 
-```
+```env
 DEV=1
 STAGING=0
 URL=http://localhost:4200
@@ -56,34 +56,34 @@ The application will be available at `http://localhost:4200/` by default.
 
 ## Running Tests
 
-### Run all tests
+### Run All Tests
 ```bash
 npx playwright test
 ```
 
-### Run tests in a specific browser
+### Run Tests in a Specific Browser
 ```bash
 npx playwright test --project=chromium
 npx playwright test --project=firefox
 npx playwright test --project=webkit
 ```
 
-### Run tests with UI (headed mode)
+### Run Tests with UI (Headed Mode)
 ```bash
 npx playwright test --headed
 ```
 
-### Run specific test file
+### Run Specific Test File
 ```bash
 npx playwright test tests/012-usePageObject.spec.ts
 ```
 
-### Run mobile tests
+### Run Mobile Tests
 ```bash
 npx playwright test --project=mobile
 ```
 
-### Run tests using npm scripts
+### Run Tests Using NPM Scripts
 ```bash
 npm run pageObjects-chrome
 npm run pageObjects-firefox
@@ -187,18 +187,20 @@ The following environment variables can be used:
 If tests fail, check the following:
 
 1. Make sure the Angular application is running on the correct port
-2. Verify that all dependencies are installed
+2. Verify that all dependencies are installed correctly
 3. Check that Playwright browsers are installed
 4. Review the test output for specific error messages
+5. Ensure environment variables are set correctly in the `.env` file
 
 ## Contributing
 
-When adding new tests:
+When adding new tests, please follow these guidelines:
 
 1. Follow the existing naming convention for test files
 2. Use Page Object Model pattern for new pages
 3. Add appropriate test descriptions and tags
 4. Update this README if adding new features
+5. Ensure all tests pass before submitting changes
 
 ## License
 

@@ -1,5 +1,11 @@
 # Playwright Test Automation Project
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)](https://nodejs.org/)
+[![Playwright](https://img.shields.io/badge/Playwright-1.57.0-blue.svg)](https://playwright.dev/)
+[![Angular](https://img.shields.io/badge/Angular-14.2.12-red.svg)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.6.4-blue.svg)](https://www.typescriptlang.org/)
+
 This project contains end-to-end test automation for an Angular application using Playwright. The tests cover various UI components, forms, interactions, and mobile responsiveness.
 
 ## Overview
@@ -24,8 +30,10 @@ cd pw-practice-app
 
 2. Install dependencies:
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
+
+> **Note:** Due to dependency conflicts in Angular 14, use `--legacy-peer-deps` flag during installation.
 
 3. Install Playwright browsers:
 ```bash

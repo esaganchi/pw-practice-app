@@ -1,10 +1,22 @@
 {
-  "name": "ngx-admin",
+  "name": "pw-practice-app",
   "version": "10.0.0",
+  "description": "Playwright test automation project for Angular application with end-to-end tests covering UI components, forms, interactions, and mobile responsiveness",
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "automation",
+    "angular",
+    "typescript",
+    "page-object-model",
+    "test-automation"
+  ],
+  "author": "Evgenii Saganchi <esaganchi@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bondar-artem/pw-practice-app.git"
+    "url": "git+https://github.com/esaganchi/pw-practice-app.git"
   },
   "scripts": {
     "ng": "ng",
@@ -81,6 +93,7 @@
     "ts-node": "3.2.2",
     "tslint": "~6.1.0",
     "tslint-language-service": "^0.9.9",
-    "typescript": "~4.6.4"
+    "typescript": "~4.6.4",
+    "webpack": "^5.76.1"
   }
 }

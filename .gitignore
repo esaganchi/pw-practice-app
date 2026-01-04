@@ -28,7 +28,6 @@
 /connect.lock
 /coverage
 /libpeerconnection.log
-npm-debug.log
 testem.log
 /typings
 /docs
@@ -42,7 +41,6 @@ testem.log
 Thumbs.db
 
 # Playwright
-node_modules/
 /test-results/
 /playwright-report/
 /blob-report/

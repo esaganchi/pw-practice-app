@@ -24,7 +24,6 @@ export default defineConfig<TestOptions>({
     //['allure-playwright'],
     ['html'],
   ],
-  
 
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */

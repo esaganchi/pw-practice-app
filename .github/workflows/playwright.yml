@@ -14,9 +14,25 @@ jobs:
       with:
         node-version: lts/*
     - name: Install dependencies
-      run: npm ci --force
+      run: npm install --legacy-peer-deps
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps --force
+    - name: Start Angular application
+      run: |
+        npm start &
+        timeout=120
+        elapsed=0
+        while ! curl -f http://localhost:4200 >/dev/null 2>&1; do
+          sleep 2
+          elapsed=$((elapsed + 2))
+          if [ $elapsed -ge $timeout ]; then
+            echo "Angular app failed to start within $timeout seconds"
+            exit 1
+          fi
+        done
+        echo "Angular app is ready"
+      env:
+        CI: true
     - name: Run Playwright tests
       run: npm run pageObjects-chrome
     - uses: actions/upload-artifact@v4
